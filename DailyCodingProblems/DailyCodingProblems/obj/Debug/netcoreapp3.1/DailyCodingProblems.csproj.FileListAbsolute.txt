@@ -1,0 +1,11 @@
+D:\Projects\DailyCodingProblems\DailyCodingProblems\DailyCodingProblems\obj\Debug\netcoreapp3.1\DailyCodingProblems.csprojAssemblyReference.cache
+D:\Projects\DailyCodingProblems\DailyCodingProblems\DailyCodingProblems\obj\Debug\netcoreapp3.1\DailyCodingProblems.AssemblyInfoInputs.cache
+D:\Projects\DailyCodingProblems\DailyCodingProblems\DailyCodingProblems\obj\Debug\netcoreapp3.1\DailyCodingProblems.AssemblyInfo.cs
+D:\Projects\DailyCodingProblems\DailyCodingProblems\DailyCodingProblems\bin\Debug\netcoreapp3.1\DailyCodingProblems.exe
+D:\Projects\DailyCodingProblems\DailyCodingProblems\DailyCodingProblems\bin\Debug\netcoreapp3.1\DailyCodingProblems.deps.json
+D:\Projects\DailyCodingProblems\DailyCodingProblems\DailyCodingProblems\bin\Debug\netcoreapp3.1\DailyCodingProblems.runtimeconfig.json
+D:\Projects\DailyCodingProblems\DailyCodingProblems\DailyCodingProblems\bin\Debug\netcoreapp3.1\DailyCodingProblems.runtimeconfig.dev.json
+D:\Projects\DailyCodingProblems\DailyCodingProblems\DailyCodingProblems\bin\Debug\netcoreapp3.1\DailyCodingProblems.dll
+D:\Projects\DailyCodingProblems\DailyCodingProblems\DailyCodingProblems\bin\Debug\netcoreapp3.1\DailyCodingProblems.pdb
+D:\Projects\DailyCodingProblems\DailyCodingProblems\DailyCodingProblems\obj\Debug\netcoreapp3.1\DailyCodingProblems.dll
+D:\Projects\DailyCodingProblems\DailyCodingProblems\DailyCodingProblems\obj\Debug\netcoreapp3.1\DailyCodingProblems.pdb
