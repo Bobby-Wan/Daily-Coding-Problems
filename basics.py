@@ -1,5 +1,5 @@
 def getNumberList():
-    line = input('Input comma separated list: ')
+    line = input('Input space separated list: ')
     line_split = line.split()
     integers = []
     for word in line_split:
