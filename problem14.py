@@ -10,7 +10,7 @@ import random
 radius = 1
 
 def in_circle(x,y):
-    if x * x + y * y < radius:
+    if x * x + y * y <= radius:
         return True
     
     return False
@@ -27,7 +27,7 @@ def circle_total(range_count):
     return count/range_count
 
 def main():
-    print(circle_total(100000) * 4)
+    print(circle_total(10000000) * 4)
 
 if __name__ == '__main__':
     main()
