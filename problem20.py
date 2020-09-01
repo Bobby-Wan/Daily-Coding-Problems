@@ -32,6 +32,5 @@ def main():
 
     common_element = commonNode(list1,list2)
     print('First common element: ', common_element)
-    
 if __name__ == '__main__':
     main()
