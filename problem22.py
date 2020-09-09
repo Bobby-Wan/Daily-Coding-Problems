@@ -19,6 +19,21 @@ def solution1(words, sentence):
 
     return solutions
 
+def solution2(words, sentence):
+    if not sentence:
+        return
+    answers=[]
+    for word in words:
+        if sentence.startswith(word):
+            if len(sentence) == len(word):
+                answers.append(word) 
+            else:
+                ans = solution2(words,sentence[len(word):])
+                for a in ans:
+                    answers.append(word+' '+a)
+
+    return answers
+            
 def main():
     wordCount = basics.getNumber()
     words = []
@@ -27,7 +42,7 @@ def main():
 
     sentence = basics.getString()
 
-    print(solution1(words, sentence))
+    print(solution2(words, sentence))
     
 
 if __name__ == '__main__':
