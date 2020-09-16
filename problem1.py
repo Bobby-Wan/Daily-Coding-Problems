@@ -8,7 +8,7 @@
 
 import basics
 
-def foo(integers, k):
+def has_pair(integers, k):
     bag = set()
     for integer in integers:
         if k - integer in bag:
@@ -19,13 +19,9 @@ def foo(integers, k):
     return False
 
 def main():
-    
     integers = basics.getNumberList()
     k = basics.getNumber()
-    if hasPair(integers, k):
-        print('true')
-    else:
-        print('false')
+    print(has_pair(integers, k))
 
 if __name__ == "__main__":
     main()
