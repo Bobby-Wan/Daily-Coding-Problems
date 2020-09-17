@@ -50,4 +50,5 @@ def rotateListRight(list, index):
 
     return rotated
 
-    
+def getString():
+    return input('Input string: ')
