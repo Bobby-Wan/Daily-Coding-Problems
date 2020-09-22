@@ -14,8 +14,8 @@ def getNumberList(text = None):
     
     return integers
 
-def getNumber():
-    number = input('Input number: ')
+def getNumber(message=''):
+    number = input(message)
     return int(number)
 
 def getIntegerListFromAPI(size, min, max):
