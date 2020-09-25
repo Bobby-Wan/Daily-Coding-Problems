@@ -6,23 +6,29 @@
 import basics
 
 def first_missing(input_list):
-    # remove non-positives
+    #create list consisting of only the positive values
+    positives = []
     for integer in input_list:
-        if integer <= 0:
-            input_list.remove(integer)
+        if integer > 0:
+            positives.append(integer) 
 
-    end = len(input_list)
-    for positive in input_list:
+    end = len(positives)
+    for positive in positives:
         if abs(positive) <= end:
-            input_list[abs(positive)-1] *= -1
+            positives[abs(positive)-1] *= -1
 
     for i in range(end):
-        if input_list[i] > 0:
+        if positives[i] > 0:
             return i+1
     
     return end + 1
 
 def main():
+    assert first_missing([2]) == 1
+    assert first_missing([1,2,5]) == 3
+    assert first_missing([-1,-2,-3]) == 1
+    assert first_missing([1,2]) == 3
+    
     print(first_missing(basics.getNumberList()))
 
 if __name__ == '__main__':
