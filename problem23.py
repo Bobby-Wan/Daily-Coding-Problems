@@ -52,12 +52,10 @@ def min_path():
             row.append(False)
         visited.append(row)
     
-    print(matrix)
     if (matrix[start_x][start_y] == True):
         return -1
     
     que = deque()
-    print('start x: ', start_x,'start y: ',start_y)
     que.appendleft(Node(start_x, start_y, 0))
 
     while(len(que) > 0):
@@ -68,6 +66,8 @@ def min_path():
         print('after condition')
         visited[current.x][current.y] = True
 
+        #Note that normal append() is used here, since we want those nodes pushed
+        #to the end
         if(not(current.x + 1 < 0 or current.x + 1 >= m or \
             current.y < 0 or current.y >= n or  \
             visited[current.x+1][current.y] or \
@@ -94,8 +94,5 @@ def min_path():
 def main():
     print(min_path())
 
-    
-
 if __name__ == '__main__':
     main()
-
