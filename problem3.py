@@ -22,9 +22,10 @@ class Node:
 class StaticHolder:
     index = 0
 
-def deserialize(root):
+def deserialize(string):
     StaticHolder.index = 0
-    return to_node(root)
+    values = string.split(' ')
+    return to_node(values)
 
 def serialize(root):
     if root == None:
@@ -33,14 +34,13 @@ def serialize(root):
         result = root.val + ' ' + serialize(root.left) + serialize(root.right)
     return result
 
-def to_node(string):
-    if string == None:
+def to_node(values):
+    if values == None:
         return None
-    values = string.split()
     if values == []:
         return None
     
-    if len(values) <= (StaticHolder.index - 1):
+    if len(values) <= StaticHolder.index:
         return None
     if values[StaticHolder.index] == 'none':
         StaticHolder.index += 1
@@ -48,8 +48,8 @@ def to_node(string):
     else:
         root = values[StaticHolder.index]
         StaticHolder.index += 1
-        left = to_node(' '.join(values))
-        right = to_node(' '.join(values))
+        left = to_node(values)
+        right = to_node(values)
         node = Node(root, left, right)
 
     return node
