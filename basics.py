@@ -1,5 +1,4 @@
 import requests
-import re
 
 def getNumberList(text = None):
     if(text == None):
