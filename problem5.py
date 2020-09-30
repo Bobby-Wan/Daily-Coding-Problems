@@ -14,31 +14,24 @@
 #     return pair
 # Implement car and cdr.
 
-import basics
-
 def cons(a, b):
     def pair(f):
         return f(a, b)
     return pair
 
-def first(a,b):
-    return a
-
-def second(a,b):
-    return b
-
 def car(pair):
+    def first(a,b):
+        return a
     return pair(first)
 
 def cdr(pair):
+    def second(a,b):
+        return b
     return pair(second)
 
-
 def main():
-    a = basics.getNumber()
-    b = basics.getNumber()
-    print(car(cons(a,b)))
-    print(cdr(cons(a,b)))
+    assert car(cons(3, 4)) == 3
+    assert cdr(cons(3, 4)) == 4
 
 if __name__ == '__main__':
     main()
