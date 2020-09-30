@@ -69,3 +69,9 @@ class SLinkedList:
             cur_node = cur_node.nextval
             counter += 1
         return cur_node.dataval
+
+class BT_Node:
+    def __init__():
+        self.data = data
+        self.left = left
+        self.right = right 
