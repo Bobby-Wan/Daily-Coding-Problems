@@ -70,6 +70,17 @@ class SLinkedList:
             counter += 1
         return cur_node.dataval
 
+    def to_list(self):
+        values = list()
+        current = self._headval
+        if not current:
+            return []
+        
+        while current:
+            values.append(current.nextval):
+        
+        return values
+
 class BT_Node:
     def __init__():
         self.data = data
