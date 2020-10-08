@@ -19,13 +19,16 @@ def get_by_address(address, global_vars):
     if address == 0:
         return None
 
-    return [x for x in global_vars.values() if id(x) == address][0]
+    result =  [x for x in global_vars.values() if id(x) == address]
+    if(len(result)):
+        return result[0]
+    else:
+        return None
 
 class Node:
     def __init__(self, val, both):
         self.val = val
         self.both = both
-
 
 class XORLinkedList:
     def __init__(self):
@@ -33,57 +36,68 @@ class XORLinkedList:
         self.last = None
 
     def print_(self):
-        if self.first is None:
-            print('none')
+        if not self.first:
+            return
         else:
             current = self.first
-            print(current.val)
-            last = None
+            prev = None
             next =  0 ^ current.both
-            while current != get_by_address(id(self), locals()).last:
-                last = id(current)
+            print(current.val)
+            while current is not self.last:
+                prev = id(current)
                 current = get_by_address(next, globals())
                 print(current.val)
-                next = last ^ current.both
+                next = prev ^ current.both
+
+    def empty(self):
+        return self.first is None and self.last is None
 
     def add(self, node):
-        if self.first is None and self.last is None:
-            self.first = get_by_address(id(node), globals())
-            self.last = get_by_address(id(node), globals())
+        if self.empty():
+            node.both = 0
+            self.first = node
+            self.last = node
         else:
-            if self.first == self.last:
-                self.first.both = 0^ id(node)
-                self.last.both = 0^id(node)
-                node.both = id(self.last)^ 0
-                self.last = node
-            else:
-                current = self.first
-                last = 0
-                next = current.both ^ last
-                while next != id(self.last):
-                    last = id(current)
-                    current = get_by_address(next, globals())
-                    next = current.both ^ last
-                self.last.both = id(current) ^ id(node)
-                node.both = id(self.last) ^ 0
-                self.last = get_by_address(id(node), globals())
-             
+            self.last.both = self.last.both ^ id(node)
+            node.both = id(self.last)
+            self.last = node
+
+            # #if list has one element
+            # if self.first is self.last:
+            #     self.first.both = 0 ^ id(node)
+            #     node.both = id(self.first) ^ 0
+            #     self.last = node
+            # else:
+            #     current = self.first
+            #     prev = 0
+            #     next = current.both ^ prev
+            #     while next != id(self.last):
+            #         prev = id(current)
+            #         current = get_by_address(next, globals())
+            #         if not current:
+            #             current = get_by_address(next, locals())
+            #         next = current.both ^ prev
+            #     self.last.both = id(current) ^ id(node)
+            #     node.both = id(self.last) ^ 0
+            #     self.last = get_by_address(id(node), globals())
+        
     def get(self, index):
         if self.first is None:
             raise Exception('Out of bound')
 
-        temp = self.first
-        next = 0 ^ temp.both
-        while index > 0:
+        current = self.first
+        last = 0
+        next = last ^ current.both
+        for _ in range(index):
             if next == 0:
                 raise Exception('Out of bound')
+            last = current
+            current = get_by_address(next, globals())
+            next = id(last) ^ current.both
             
-            last = temp
-            temp = get_by_address(next, globals())
-            next = id(last) ^ temp.both
-            index = index - 1
-            
-        return temp
+        return current
+
+
 
 first_node = Node('first', 0)
 second_node = Node('second', 0)
@@ -91,16 +105,13 @@ third_node = Node('third', 0)
 fourth_node = Node('fourth', 0)
 fifth_node = Node('fifth',0)
 
-
 def main():
     xor_list = XORLinkedList()
     
     xor_list.add(first_node)
     xor_list.add(second_node)
     xor_list.add(third_node)
-    xor_list.add(fourth_node)
-    xor_list.add(fifth_node)
-    xor_list.print_()
-    
+
+    print(xor_list.get(3).val)    
 if __name__ == '__main__':
     main()
