@@ -15,6 +15,7 @@
 # to get_pointer and dereference_pointer functions 
 # that converts between nodes and memory addresses.
 
+#The function I use to get a node by its memory address
 def get_by_address(address, global_vars):
     if address == 0:
         return None
@@ -35,6 +36,7 @@ class XORLinkedList:
         self.first = None
         self.last = None
 
+    #Mainly used for testing, no need to
     def print_(self):
         if not self.first:
             return
@@ -52,6 +54,7 @@ class XORLinkedList:
     def empty(self):
         return self.first is None and self.last is None
 
+    #Nothing much here, mainly messing around with the 'both' attribute
     def add(self, node):
         if self.empty():
             node.both = 0
@@ -61,25 +64,6 @@ class XORLinkedList:
             self.last.both = self.last.both ^ id(node)
             node.both = id(self.last)
             self.last = node
-
-            # #if list has one element
-            # if self.first is self.last:
-            #     self.first.both = 0 ^ id(node)
-            #     node.both = id(self.first) ^ 0
-            #     self.last = node
-            # else:
-            #     current = self.first
-            #     prev = 0
-            #     next = current.both ^ prev
-            #     while next != id(self.last):
-            #         prev = id(current)
-            #         current = get_by_address(next, globals())
-            #         if not current:
-            #             current = get_by_address(next, locals())
-            #         next = current.both ^ prev
-            #     self.last.both = id(current) ^ id(node)
-            #     node.both = id(self.last) ^ 0
-            #     self.last = get_by_address(id(node), globals())
         
     def get(self, index):
         if self.first is None:
@@ -87,17 +71,19 @@ class XORLinkedList:
 
         current = self.first
         last = 0
+        #using the XOR operation here to find the address of the next node
         next = last ^ current.both
         for _ in range(index):
+            #if this evaluates to true, we have reached the end of the list -> the
+            #index is too big
             if next == 0:
                 raise Exception('Out of bound')
             last = current
+            #getting the nodde object by its address here
             current = get_by_address(next, globals())
             next = id(last) ^ current.both
             
         return current
-
-
 
 first_node = Node('first', 0)
 second_node = Node('second', 0)
@@ -112,6 +98,7 @@ def main():
     xor_list.add(second_node)
     xor_list.add(third_node)
 
-    print(xor_list.get(3).val)    
+    print(xor_list.get(2).val)    
+
 if __name__ == '__main__':
     main()
